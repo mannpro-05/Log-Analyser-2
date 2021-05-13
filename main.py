@@ -56,11 +56,13 @@ for log in os.listdir():
             finalData = []
 
             if len(lst) == 1 or 'date_time' in lst[3].strip('"'):
+
                 continue
             try:
                 for key, val in mapper.items():
                     if key in exception:
                         finalData.append(lst[val].strip('"'))
+
                         continue
                     elif key == 'DATE_TIME':
                         date = lst[val].strip('"').split(':')
@@ -69,6 +71,7 @@ for log in os.listdir():
                         finalData.append(
                             datetime.datetime(int(day[2]), int(day[1]), int(day[0]), int(date[1]), int(date[2]),
                                               int(date[3])).timestamp())
+
                         continue
                     elif key == 'URL':
                         if lst[val].strip('"') != '-':
@@ -104,7 +107,6 @@ for log in os.listdir():
                     conn.commit()
             except Exception as e:
                 print(e)
-        counter += 1
     if int(log.split('-')[0]) >= max:
         maxCounter = counter
         max = int(log.split('-')[0])

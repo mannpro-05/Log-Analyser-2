@@ -20,7 +20,9 @@ newFileLine = 0
 max = int(os.listdir()[0].split('-')[0])
 
 for i in os.listdir():
-    if int(i.split('-')[0]) > currentFileName:
+    if i == 'extended.log':
+        continue
+    elif int(i.split('-')[0]) > currentFileName:
         newFileName = int(i.split('-')[0])
         newFileLine = insertRecords.insertNewRecords(i)
     elif int(i.split('-')[0]) == currentFileName:
