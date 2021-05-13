@@ -46,12 +46,12 @@ months = {
 exception = ['STATUS', 'UPLOAD', 'DOWNLOAD']
 max = int(os.listdir()[0].split('-')[0])
 for log in os.listdir():
-    print(os.getcwd(), log)
-    counter = 1
+    counter = 0
     if log == 'extended.log':
         continue
     with open(log,'r') as logs:
         for i in logs:
+            counter+=1
             lst = i.split('\t')
             finalData = []
 
