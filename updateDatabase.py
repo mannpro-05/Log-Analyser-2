@@ -2,9 +2,10 @@ import os
 import time
 import insertRecords
 import sqlite3 as sl
+conn = sl.connect('logs.db')
 
 os.chdir('/var/log/safesquid/extended/')
-conn = sl.connect('logs.db')
+
 
 cursor = conn.execute("SELECT * FROM FILEUPDATIONINFO")
 
