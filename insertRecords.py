@@ -61,6 +61,7 @@ def insertNewRecords(fileName):
             finalData = []
 
             if len(lst) == 1 or 'date_time' in lst[3].strip('"'):
+                counter += 1
                 continue
             try:
                 for key, val in mapper.items():
@@ -119,8 +120,10 @@ def insertModifiedRecordsRecords(fileName, oldCounter):
             lst = i.split('\t')
             finalData = []
             if len(lst) == 1 or 'date_time' in lst[3].strip('"'):
+                counter += 1
                 continue
             elif counter < oldCounter:
+                counter += 1
                 continue
             else:
                 try:
