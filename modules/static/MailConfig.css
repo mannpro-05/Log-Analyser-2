@@ -1,0 +1,215 @@
+
+ *{
+  box-sizing: border-box;
+}
+
+body{
+background: linear-gradient(135deg , #71b7e6 , #9b59b6);
+  align-items: center;
+}
+  
+  
+.container{
+	margin-top: 25px;
+	margin-bottom: 25px;
+    width: 600px;
+    background-color: #fff;
+    border-radius: 4px;
+    overflow: auto;
+	height: auto;
+}
+
+.SettingHeadContainer{
+	text-align: center;
+	background-color: #acbef8;
+    padding: 10px 20px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.ErrorContainer{
+	margin-top: 500px;
+	font-size: 18px;
+	color: #C62828;
+	background: rgba(255,0,0,0.1);
+	text-align: center;
+	padding: 5px;
+	border-radius: 3px;
+	border: 1px solid #EF9A9A;
+}
+
+.form{
+    padding: 20px 40px;
+}
+
+.form-control{
+    margin-bottom:10px;
+}
+.form-control lable {
+    display: inline-block;
+    margin-bottom:5px;
+}
+.form-control input{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border:2px solid #d8d1d1;
+}
+
+.form-control.success input{
+    border:2px solid rgb(26, 167, 26);
+}
+.form-control.error input{
+    border:2px solid rgb(228, 29, 22);
+}
+.form-control small{
+    position:relative;
+    margin: 5px;
+    visibility: hidden;
+	margin-top: 10px;
+}
+button{
+    background-color: rgb(80, 147, 235);
+    color:#fff;
+    padding: 10px 20px;
+    width: 100%;
+    border-radius:4px;
+    border:2px solid rgb(80, 147, 235);
+    cursor: pointer;
+}
+
+.form-control{
+	border: none;
+}
+
+/* ----------------------------------------navigation Start---------------------------------------- */
+/* -----------------------------------------Navigation Background And Size-------------------------------------------- */
+header{
+  position: relative;
+  padding:0;
+  background: linear-gradient(135deg , #71b7e6 , #b97ad1);
+
+  box-sizing: border-box;
+  /* border-radius: 4px; */
+  box-shadow: 0 2px 5px rgba(0,0,0,.2);
+}
+/* -----------------------------------------Navigation Background And Size-------------------------------------------- */
+#carouselExampleIndicators{
+  position: relative;
+  width: 100%;
+  padding:15px 0 20px 0;
+  margin: 0;
+}
+
+/* ---------------------------------------------Logo------------------------------------------ */
+.logo img{
+  width: 182px;
+  /* background-color: cornflowerblue; */
+  
+  padding: 0 20px;
+  box-sizing: border-box;
+  float: left;
+}
+/* ---------------------------------------------Logo------------------------------------------ */
+/* ---------------------------------------------Navigation text Position----------------------------------- */
+nav{
+  float: right;
+}
+
+
+/* ---------------------------------------------Navigation text Position----------------------------------- */
+/* ---------------------------------------------Both Side Space------------------------------------------- */
+.NavStyler{
+  clear: both;
+}
+/* ---------------------------------------------Both Side Space------------------------------------------- */
+/* /* ------------------------------------------------Horizontal TO Vertical Nav Bar Text------------------------------------ */
+nav ul{
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+/* /* ------------------------------------------------Horizontal TO Vertical Nav Bar Text------------------------------------ */
+/* ----------------------------------------------changing Style ------------------------------------- */
+nav ul li{
+  list-style: none;
+}
+/* ----------------------------------------------changing Style ------------------------------------- */
+/* ----------------------------------Navigation Text-------------------------------- */
+nav ul li a{
+  display: block;
+  margin: 13px 0;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: rgb(69, 90, 76);
+  font-weight: bold;
+}
+/* ----------------------------------Navigation Text-------------------------------- */
+/* -----------------------------------Navigation Hover Effect------------------------ */
+nav ul li a:hover{
+  background: rgb(255, 172, 252);
+  color: rgb(0, 0, 0);
+  transition: 0.5s;
+  border-radius: 50px;
+}
+/* -----------------------------------Navigation Hover Effect------------------------ */
+/* ---------------------------------Responsive Affect ------------------------------ */
+@media(max-width:1100px){
+  .menu-toggle{
+      display: block;
+      width: 40px;
+      height: 40px;
+      margin: 10px;
+      float: right;
+      cursor: pointer;
+      text-align: center;
+      font-size: 30px;
+      color:rgb(95, 226, 255);
+  }
+/* ---------------------------------------Logo Of Menu------------------------------ */
+.menu-toggle:before{
+  content: '\f0c9';
+  font-family: fontAwesome;
+  line-height: 40px;
+}
+/* ---------------------------------------Logo Of Menu------------------------------*/
+/* -------------------------------------------Logo of Close----------------------------- */
+.menu-toggle.active:before{
+  content: '\f00d';
+}
+/* -------------------------------------------Logo of Close----------------------------- */
+  nav{
+      display: none;
+  }
+  nav.active{
+      display: block;
+      width: 100%;
+  }
+  nav.active ul{
+      display: block;
+  }
+  nav.active ul li{
+      margin: 0;
+  }
+}
+/* ---------------------------------Responsive Affect ------------------------------ */
+  /* ----------------------------------------navigation end---------------------------------------- */
+
+.results{
+  margin-bottom: 50px;
+}
+
+.SettingHeader{
+  text-align: center;
+}
+.SettingPara{
+  margin-bottom: 20px;
+}
+
+@media screen and(max-width: 500px) {
+  .config-form{
+    width: 90vw;
+    max-width: 550px;
+    margin: 8vh auto;
+  }
+}

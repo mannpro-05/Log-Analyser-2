@@ -1,0 +1,172 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    background: linear-gradient(135deg , #71b7e6 , #9b59b6);
+}
+
+/* ----------------------------------------navigation Start---------------------------------------- */
+/* -----------------------------------------Navigation Background And Size-------------------------------------------- */
+header{
+  position: relative;
+  padding:0;
+  background: linear-gradient(135deg , #71b7e6 , #b97ad1);
+
+  box-sizing: border-box;
+  /* border-radius: 4px; */
+  box-shadow: 0 2px 5px rgba(0,0,0,.2);
+}
+/* -----------------------------------------Navigation Background And Size-------------------------------------------- */
+#carouselExampleIndicators{
+  position: relative;
+  width: 100%;
+  padding:15px 0 20px 0;
+  margin: 0;
+}
+
+/* ---------------------------------------------Logo------------------------------------------ */
+.logo img{
+  width: 182px;
+  /* background-color: cornflowerblue; */
+  
+  padding: 0 20px;
+  box-sizing: border-box;
+  float: left;
+}
+/* ---------------------------------------------Logo------------------------------------------ */
+/* ---------------------------------------------Navigation text Position----------------------------------- */
+nav{
+  float: right;
+}
+
+
+/* ---------------------------------------------Navigation text Position----------------------------------- */
+/* ---------------------------------------------Both Side Space------------------------------------------- */
+.NavStyler{
+  clear: both;
+}
+/* ---------------------------------------------Both Side Space------------------------------------------- */
+/* /* ------------------------------------------------Horizontal TO Vertical Nav Bar Text------------------------------------ */
+nav ul{
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+/* /* ------------------------------------------------Horizontal TO Vertical Nav Bar Text------------------------------------ */
+/* ----------------------------------------------changing Style ------------------------------------- */
+nav ul li{
+  list-style: none;
+}
+/* ----------------------------------------------changing Style ------------------------------------- */
+/* ----------------------------------Navigation Text-------------------------------- */
+nav ul li a{
+  display: block;
+  margin: 13px 0;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: rgb(69, 90, 76);
+  font-weight: bold;
+}
+/* ----------------------------------Navigation Text-------------------------------- */
+/* -----------------------------------Navigation Hover Effect------------------------ */
+nav ul li a:hover{
+  background: rgb(255, 172, 252);
+  color: rgb(0, 0, 0);
+  transition: 0.5s;
+  border-radius: 50px;
+}
+/* -----------------------------------Navigation Hover Effect------------------------ */
+/* ---------------------------------Responsive Affect ------------------------------ */
+@media(max-width:1100px){
+  .menu-toggle{
+      display: block;
+      width: 40px;
+      height: 40px;
+      margin: 10px;
+      float: right;
+      cursor: pointer;
+      text-align: center;
+      font-size: 30px;
+      color:rgb(95, 226, 255);
+  }
+/* ---------------------------------------Logo Of Menu------------------------------ */
+.menu-toggle:before{
+  content: '\f0c9';
+  font-family: fontAwesome;
+  line-height: 40px;
+}
+/* ---------------------------------------Logo Of Menu------------------------------*/
+/* -------------------------------------------Logo of Close----------------------------- */
+.menu-toggle.active:before{
+  content: '\f00d';
+}
+/* -------------------------------------------Logo of Close----------------------------- */
+  nav{
+      display: none;
+  }
+  nav.active{
+      display: block;
+      width: 100%;
+  }
+  nav.active ul{
+      display: block;
+  }
+  nav.active ul li{
+      margin: 0;
+  }
+}
+/* ---------------------------------Responsive Affect ------------------------------ */
+  /* ----------------------------------------navigation end---------------------------------------- */
+
+.QueryBox{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.QueryContainer{
+    max-width: 700px;
+    width: 100%;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+.QueryContainer .QueryTitle{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+    margin-bottom: 15px;
+}
+.QueryContainer .QueryTitle::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background: linear-gradient(135deg , #71b7e6 , #9b59b6);
+}
+.QuerySubmitButton{
+    float: right;
+    position: relative;
+    height: 40px;
+    width: 150px;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+    border-radius: 35px;
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    overflow: hidden;
+    background-color: violet;
+    transition: 0.2s;
+}  
+.QuerySubmitButton:hover{
+    color: #000000;
+    background: #c156eb;
+    box-shadow: 0 0 10px #c156eb, 0 0 40px #c156eb,0 0 80px #c156eb
+}

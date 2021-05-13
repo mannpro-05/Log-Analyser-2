@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="static/magicsuggest/magicsuggest-min.css" rel="stylesheet">
+    <script src="static/magicsuggest/magicsuggest-min.js"></script>
+    <script type="text/javascript" src="static/createReport.js"></script>
+    <link rel="stylesheet" href="static/create_report.css">
+    <script type="text/javascript" src="static/jquery-clock-timepicker-master/jquery-clock-timepicker.js"></script>
+
+</head>
+<body>
+
+    <header>
+        <a href="{{ url_for('createReport') }}" class="logo"><img src="{{ url_for('static',filename="SafeSquid-Labs.png") }}"></a>
+        <div class="menu-toggle"></div>
+        <nav>
+          <ul>
+              <li><a href="{{ url_for('createReport') }}" class="NavText/left">Create Report</a></li>
+              <li><a href="{{ url_for('viewReport') }}" class="NavText/left">View Report</a></li>
+              <li><a href="{{ url_for('activityLog') }}" class="NavTextRight" >Activity Log</a></li>
+              <li><a href="{{ url_for('helpForm') }}" class="NavTextRight" >Help</a></li>
+              <li><a href="{{ url_for('config') }}" class="NavTextRight" >Settings</a></li>
+              <li><a href="{{ url_for('account') }}" class="NavTextRight" >Account</a></li>
+              <li><a href="{{ url_for('logout') }}" class="NavTextRight" >Logout</a></li>
+            </ul>
+          </nav>
+        <div class="NavStyler"></div>
+      </header>
+
+
+    <h1 class="HeadingCreateReport">Create Report</h1>
+    <main class="container">
+        <form name="CreateForm" id="Form" class="form" action="javascript:submit()" onsubmit="return validateInput()">
+            <div class="row mb-3">
+                <label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
+                <div class="col-sm-10">
+                    <input id="title" type="Title" class="form-control" placeholder="Title">
+                    <b><small class="ErrorContainer">Error Message</small></b>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputTitle" class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-10">
+                    <textarea name="Description" id="description" cols="40" rows="5" placeholder="Description"
+                        class="DescriptionTextArea form-control"></textarea>
+                    <b><small class="ErrorContainer">Error Message</small></b>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column" style="padding-top: 22px;">
+            <select id="columnDropdown" class="form-select"></select>
+            </div>
+            <div class="columnDropdownNTime">
+            <button id="columnButton" type="button" class="AddRemoveButton">
+                Remove
+            </button>
+            </div>
+       <div class="columnDateTime">
+                    <div>
+                        <label for="start-date">Start Date</label>
+                        <input type="date" id="start_date" name="start-date">
+                        <br>
+                        <br>
+                        <b><small class="ErrorContainer">Error Message</small></b>
+                    </div>
+                    <div>
+                        <br>
+                        <label for="end_date">End Date</label>
+                        <input type="date" id="end_date" name="end-date">
+                        <br>
+                        <b><small class="ErrorContainer">Error Message</small></b>
+                        <br>
+                    </div>
+                </div>
+                <div class="columnDateTime">
+                    <div>
+                        <label for="start-time">Start Time</label>
+                        <input type="time" id="start_time" name="start-time">
+                        <br>
+                        <br>
+                        <b><small class="ErrorContainer">Error Message</small></b>
+                    </div>
+                    <div>
+                        <br>
+                        <label for="end_time">End Time</label>
+                        <input type="time" id="end_time" name="end-time">
+                        <br>
+                        <b><small class="ErrorContainer">Error Message</small></b>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <br>
+        <div style="overflow-x:auto;">
+        <table id="PreviewTable" class="table table-striped">
+        </table>
+    </div>
+
+        <br>
+        <hr>
+
+
+        <div class="emailing" id="Emailing">
+            <h2>EMAILING</h2>
+
+            <table id="EmailTable" class="table table-striped">
+                <thead>
+                    <tr class="bg-info">
+                        {% for col in emailTable %}
+                            <th>{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <div>
+                <b><small class="ErrorContainer">Error Message</small></b>
+            </div>
+            <button id="AddEmailRow" name="AddRow" type="button">Add</button>
+        </div>
+
+        <br>
+        <hr>
+
+        <div class="Filtering" id="Filtering">
+            <h2>FILTERING</h2>
+            <table id="FilterTable" class="table table-striped">
+                <thead>
+                    <tr class="bg-info">
+                        {% for col in filterTable %}
+                        <th>{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+
+                    </tbody>
+                </table>
+                <div>
+                    <b><small class="ErrorContainer">Error Message</small></b>
+                </div>
+                <button id="AddFilterRow" name="AddRow" type="button">Add</button>
+            </div>
+            <div class="submitButton">
+                <button id="submit" name="submit" type="submit">Submit</button>
+            </div>
+        </form>
+    </main>
+
+
+    </p>
+</body>
+
+</html>

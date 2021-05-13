@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="static/view_reports.css">
+
+    <title>Document</title>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="static/view_reports.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <a href="" class="logo"><img src="{{ url_for('static',filename="SafeSquid-Labs.png") }}"></a>
+        <div class="menu-toggle"></div>
+        <nav>
+          <ul>
+              <li><a href="{{ url_for('createReport') }}" class="NavText/left">Create Report</a></li>
+              <li><a href="{{ url_for('viewReport') }}" class="NavText/left">View Report</a></li>
+              <li><a href="{{ url_for('activityLog') }}" class="NavTextRight" >Activity Log</a></li>
+              <li><a href="{{ url_for('helpForm') }}" class="NavTextRight" >Help</a></li>
+              <li><a href="{{ url_for('config') }}" class="NavTextRight" >Settings</a></li>
+              <li><a href="{{ url_for('account') }}" class="NavTextRight" >Account</a></li>
+              <li><a href="{{ url_for('logout') }}" class="NavTextRight" >Logout</a></li>
+            </ul>
+          </nav>
+        <div class="NavStyler"></div>
+      </header>
+
+
+    <h1 class="ViewReportHeader">View Reports</h1>
+    <main class="containerView">
+        <div class="ReportTableContainer">
+            <table id="ReportsTable" class="table table-striped">
+            <thead>
+            <tr class="bg-info">
+                {% for col in reportsTableColumns  %}
+                <th>{{ col }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+        <tbody>
+            {% for row in rows %}
+                <tr>
+                    <td class="reportTitle">{{ row["title"] }}</td>
+                    <td class="reportDescription"><pre>{{ row["description"] }}</pre></td>
+                        <td class="reportFields">
+                            <ol>
+                                 {% for fields in row["fields"].split(',') %}
+                                    <li>{{ fields }}</li>
+                                 {% endfor %}
+                            </ol>
+                        </td>
+                    <td class="reportEmails">
+                        <ol>
+                            {% for key,val in row["email"].items() %}
+                                <li>
+                                    <ul>
+                                        <li class="email-recipient">{{ row["email"][key]["recipient"] }}</li>
+                                        <li class="email-frequency">{{ row["email"][key]["frequency"] }}</li>
+                                        <li class="email-schedule">{{ row["email"][key]["schedule"] }}</li>
+                                    </ul>
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    </td>
+                    <td class="reportFilters">
+                        <ol>
+                            {% for key,val in row["filters"].items() %}
+                                <li>{{ row["filters"][key]["targetColumn"] }} {{ row["filters"][key]["condition"] }} {{ row["filters"][key]["value"] }}</li>
+                           {% endfor %}
+                        </ol>
+                    </td>
+                    <td class = 'reportActions'class="col-md-2 text-center">
+                        <div class="downloadDropdown">
+                            <button onclick="dropdownControl(this)" class="dropdownbutton"><i class="bi bi-cloud-download-fill"></i></button>
+                                <div class="dropdown-content">
+                                <a href="{{ url_for('download', title = row["title"], fileType = 'xlsx' ) }}">
+                                    <button name="DownloadXLS" class="Excelbutton">Excel</button></a>
+                                <a href="{{ url_for('download', title = row["title"], fileType = 'csv' ) }}">
+                                    <button name="DownloadCSV" class="CSVbutton" >CSV</button></a>
+                                </div>
+                                <button onclick="deleteReport(this)" name="Delete" class="DeleteAction"><i class="fa fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+        </div>
+    </main>
+</body>
+
+</html>

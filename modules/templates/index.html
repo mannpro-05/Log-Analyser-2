@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src= "https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="static/create_report.css">
+
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li><a href="{{ url_for('createReport') }}">Create Report</a></li>
+        <li><a href="">View Table</a></li>
+        <li><a href="">Activity Log</a></li>
+        <li><a href="">Help</a></li>
+        <li><a href="{{ url_for('config') }}">Settings</a></li>
+        <li><a href="{{ url_for('hello_world') }}">Downloads</a></li>
+        <li><a href="{{ url_for('account') }}">Account</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+
+    </ul>
+    <form action = "/reportsDisplay" method="post">
+        <input name="id">
+        <select name = "download">
+            <option value = 'csv'>csv</option>
+            <option value = "xlsx">xlsx</option>
+        </select>
+        <input type="submit" value="Diplay">
+        <input type="submit" value="Download" formaction="/download">
+    </form>
+</body>
+</html>
