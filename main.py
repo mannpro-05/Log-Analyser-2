@@ -46,6 +46,7 @@ months = {
 exception = ['STATUS', 'UPLOAD', 'DOWNLOAD']
 max = int(os.listdir()[0].split('-')[0])
 for log in os.listdir():
+    print(os.getcwd(), log)
     counter = 1
     if log == 'extended.log':
         continue
