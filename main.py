@@ -46,9 +46,6 @@ months = {
 exception = ['STATUS', 'UPLOAD', 'DOWNLOAD']
 max = int(os.listdir()[0].split('-')[0])
 for log in os.listdir():
-    if int(log.split('-')[0]) >= max:
-        maxCounter = counter
-        max = max
     counter = 1
     with open(log,'r') as logs:
         for i in logs:
@@ -105,6 +102,10 @@ for log in os.listdir():
             except Exception as e:
                 print(e)
         counter += 1
+    if int(log.split('-')[0]) >= max:
+        maxCounter = counter
+        max = int(log.split('-')[0])
+
 
 conn.commit()
 
