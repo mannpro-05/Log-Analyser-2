@@ -12,8 +12,8 @@ cursor = conn.execute("SELECT * FROM FILEUPDATIONINFO")
 currentFile = cursor.fetchone()
 cronTime =int(time.time())
 
-currentFileName = currentFile[0]
-currentFileLine = currentFile[1]
+currentFileName = int(currentFile[0])
+currentFileLine = int(currentFile[1])
 
 newFileName = 0
 newFileLine = 0
